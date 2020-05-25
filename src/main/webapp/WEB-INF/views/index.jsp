@@ -37,7 +37,11 @@
          <td>
             <c:out value="${grade.total}" />
         </td>
+        <td> 
+        <c:out value ="${grade.getPercentage()}"/>
+        </td> 
          <td>
+      
             <a href ="/delete?id=${grade.id}">Delete</a>
          </td>
     </tr>

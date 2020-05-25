@@ -7,33 +7,28 @@ public class Grade {
 	private String type;
 	private Double score;
 	private Double total;
-	//private Double percentage = score/total;
+	private Double percentage;
 	
-	public Grade() {	
-	}
-	
-	public Grade(Long id, String name, String type, Double score, Double total, Double percentage) {
+	public Grade(Long id, String name, String type, Double score, Double total) {
 		super();
 		this.id=id;
 		this.name=name;
 		this.type=type;
 		this.score=score;
 		this.total=total;
-		//this.percentage=percentage;
+		this.percentage= percentage;
 	}
 
-//	public Double getPercentage() {
-//		return percentage;
-//	}
-
-//	public void setPercentage(Double percentage) {
-//		this.percentage = percentage;
-//	}
-
-	// <td> 
-   //  <c:out value ="${grade.percentage}"/>
-    // </td> 
+	public Grade() {	
+    }
 	
+	public Double getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(Double percentage) {
+		this.percentage = percentage;
+	}
 	
 	public Long getId() {
 		return id;
@@ -70,18 +65,14 @@ public class Grade {
 	public Double getTotal() {
 		return total;
 	}
-
+	
 	public void setTotal(Double total) {
 		this.total = total;
 	}
 
 	@Override
 	public String toString() {
-		return "Grade [id=" + id + ", name=" + name + ", type=" + type + ", score=" + score + ", total=" + total + "]";
+		return "Grade [id=" + id + ", name=" + name + ", type=" + type + ", score=" + score + ", total=" + total
+				+ ", percentage=" + percentage + "]";
 	}
-	
-	
-	
-	
-	
 }

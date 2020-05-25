@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public class GradeDao {
@@ -25,8 +28,9 @@ public class GradeDao {
 	}
 
 	public void create(Grade grade) {
-		String sql = "INSERT INTO grade (name, type, score, total) VALUES (?, ?, ?, ?)";
-		jdbc.update(sql, grade.getName(), grade.getType(), grade.getScore(), grade.getTotal());
+		String sql = "INSERT INTO grade (name, type, score, total, percentage) VALUES (?, ?, ?, ?, ?)";
+		System.out.print(grade.toString());
+		jdbc.update(sql, grade.getName(), grade.getType(), grade.getScore(), grade.getTotal(), grade.getPercentage());
 	}
 
 	public void update(Grade grade) {
@@ -43,6 +47,7 @@ public class GradeDao {
 //		String sql = "SELECT(score / total) FROM grade WHERE id = ?";
 //		jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Grade.class), id); 	
 //	}
+	
 	
 }
 
