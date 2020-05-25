@@ -42,12 +42,5 @@ public class GradeDao {
 		String sql = "DELETE FROM grade WHERE id = ?";
 		jdbc.update(sql, id);
 	}
-	
-//	public Grade findByPercent(Long id) {
-//		String sql = "SELECT(score / total) FROM grade WHERE id = ?";
-//		jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Grade.class), id); 	
-//	}
-	
-	
 }
 

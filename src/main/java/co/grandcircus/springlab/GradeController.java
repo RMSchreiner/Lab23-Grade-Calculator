@@ -1,5 +1,6 @@
 package co.grandcircus.springlab;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,15 @@ public class GradeController {
 	@RequestMapping("/")
 	public String list(Model model) {
 		List<Grade>ListofGrades = gradeDao.findAll();
+		double total = 0;
+		double score = 0;
+		for(Grade Grade : ListofGrades) {
+		 total = total + Grade.getTotal();
+		 score = score + Grade.getScore();
+		}
+		int percent = (int) (100 * score/total);
+		
+		model.addAttribute("percent", percent);
 		model.addAttribute("grades", ListofGrades);
 		return "index";
 	}
@@ -50,31 +60,7 @@ public class GradeController {
 		return "confirmation";
 	}
 	
-//	@RequestMapping("form/confirmation")
-//	public String detail(@RequestParam("id") Long id, Model model) {
-//		Grade grade = gradeDao.findById(id);
-//		System.out.println(grade);
-//		model.addAttribute("grade", grade);
-//		return "confirmation";
-//	}
-//	@PostMapping("/form")
-//	public String submitAdd(
-//			@RequestParam(value="name",required=true) String name,
-//			@RequestParam(value="type",required=true) String type,
-//			@RequestParam(value="score",required=true) Double score,
-//			@RequestParam(value="total",required=true) Double total,
-//			Model model) {
-//		  
-//		    Double percentage= score/total;
-//		
-//		model.addAttribute("name", name);
-//		model.addAttribute("type", type);
-//		model.addAttribute("score", score);
-//		model.addAttribute("total", total);
-//		model.addAttribute("percentage", percentage);
-//		
-//		return "confirmation";
-//	}
+    
 	
 }
 

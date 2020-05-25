@@ -38,16 +38,17 @@
             <c:out value="${grade.total}" />
         </td>
         <td> 
-        <c:out value ="${grade.getPercentage()}"/>
+        <c:out value ="${grade.percentage}%"/>
         </td> 
          <td>
       
             <a href ="/delete?id=${grade.id}">Delete</a>
          </td>
     </tr>
-    </c:forEach>
+    </c:forEach>  
 </table>
 <br>
+<p> Overall Grade: ${percent}% </p>  <!--  casted to a integer so there is no decimal place -->
 <a href="/form">Add a Grade</a>
 </div>
 </body>
