@@ -18,7 +18,7 @@
 	<br>
 		<h2>Add a Grade</h2>
 		<br>
-		<form action="/confirmation" method="post">
+		<form action="/confirmation" method="post" >
 			<table class="table">
 				<tr>
 					<th scope="row">Name</th>

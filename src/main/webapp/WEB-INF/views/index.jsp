@@ -15,6 +15,7 @@
 <br>
 <h2> Welcome to Earth</h2>
 <br>
+<h2>${message}</h2>
 <table style=width:60%>
     <tr>
         <th>Name</th>  <!--  padding needed-->
@@ -42,7 +43,8 @@
         </td> 
          <td>
       
-            <a href ="/delete?id=${grade.id}">Delete</a>
+            <a href ="/delete?id=${grade.id}&name=${grade.name}">Delete</a>
+            
          </td>
     </tr>
     </c:forEach>  

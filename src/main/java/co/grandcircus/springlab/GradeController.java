@@ -26,6 +26,8 @@ public class GradeController {
 	
 	@RequestMapping("/")
 	public String list(Model model) {
+		//Here we took the ListofGrades created from the findAll DAO. After iterating through the grade list we calculated
+		//the total percentage with getTotal and getScore
 		List<Grade>ListofGrades = gradeDao.findAll();
 		double total = 0;
 		double score = 0;
@@ -35,8 +37,12 @@ public class GradeController {
 		}
 		int percent = (int) (100 * score/total);
 		
+		String message = null;
+		if (percent == 0) {message = "There are no scores to display";}
+		
 		model.addAttribute("percent", percent);
 		model.addAttribute("grades", ListofGrades);
+		model.addAttribute("message", message);
 		return "index";
 	}
 
@@ -49,9 +55,32 @@ public class GradeController {
 		return "confirmation";
 	}
 	
+//	@RequestMapping("/delete")
+//	public String remove(@RequestParam("id") Long id) {
+//		gradeDao.delete(id);
+//		return "delete";
+//	}
+	//by including Model model and assigning to a variable we can "pass" information along from html to html 
+	//Remember to include the addAttribute to the html markup
+	//http://localhost:8080/delete?id=39&name=Computer%20Gaming%20101   example of mark up
+	//<a href ="/delete?id=${grade.id}&name=${grade.name}">Delete</a> example of href link for markup
+	
 	@RequestMapping("/delete")
-	public String remove(@RequestParam("id") Long id) {
-		gradeDao.delete(id);
+	public String deleteApproval(@RequestParam("id") Long id,
+			                     @RequestParam("name") String name, 
+			                     Model model) {
+		Long deleteID = id;
+		String testName = name;
+		
+		model.addAttribute("deleteID", deleteID);
+		model.addAttribute("testName", testName);
+		
+		return "delete";
+	}
+	
+	@RequestMapping("/deleteapproval")
+	public String remove(@RequestParam("deleteID") Long deleteID, Model model ) {
+		gradeDao.delete(deleteID);
 		return "redirect:/";
 	}
 	
@@ -59,9 +88,6 @@ public class GradeController {
 	public String showAdd() {		
 		return "confirmation";
 	}
-	
-    
-	
 }
 
 
